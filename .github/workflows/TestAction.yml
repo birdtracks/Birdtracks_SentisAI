@@ -26,21 +26,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         uses: actions/checkout@v4
 
-      - name: Setup Unity Environment
-        uses: game-ci/unity-setup@v1
-        with:
-          unityVersion: '2022.3.20f1'  # Specify your project's Unity version
-
-      - name: Generate Library
+      - name: Generate Library (if missing)
         run: |
-          # Add a command here to open Unity in batchmode to generate the Library directory
-          # Example (adjust based on your actual Unity setup and version):
           "C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Unity.exe" -batchmode -projectPath "${{ github.workspace }}/Birdtracks_SentisAI/Birdtracks_SentisAI" -quit
+          if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Restore Library cache
         uses: actions/cache@v2
         with:
-          path: Birdtracks_SentisAI/Birdtracks_SentisAI/Library
+          path: ./Birdtracks_SentisAI/Birdtracks_SentisAI/Library
           key: Library-${{hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**')}}
           restore-keys: |
             Library-${{hashFiles('Assets/**')}}
@@ -49,6 +43,6 @@ jobs:
       - name: Build Project
         uses: game-ci/unity-builder@v4
         with:
-          projectPath: Birdtracks_SentisAI/Birdtracks_SentisAI
+          projectPath: ./Birdtracks_SentisAI/Birdtracks_SentisAI
           targetPlatform: StandaloneWindows64
       
