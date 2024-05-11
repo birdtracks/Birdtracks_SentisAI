@@ -29,14 +29,15 @@ jobs:
       - name: Restore Library cache
         uses: actions/cache@v2
         with:
-          path: Library
+          path: Birdtracks_SentisAI/Birdtracks_SentisAI/Library
           key: Library-${{hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**')}}
           restore-keys: |
+            Library-${{hashFiles('Assets/**')}}
             Library-
 
       - name: Build Project
         uses: game-ci/unity-builder@v4
         with:
-          projectPath: Build
+          projectPath: Birdtracks_SentisAI/Birdtracks_SentisAI
           targetPlatform: StandaloneWindows64
       
