@@ -35,7 +35,7 @@ jobs:
         run: |
           # Add a command here to open Unity in batchmode to generate the Library directory
           # Example (adjust based on your actual Unity setup and version):
-          "C:\Program Files\Unity\Hub\Editor\2020.3.0f1\Editor\Unity.exe" -batchmode -projectPath "${{ github.workspace }}/Birdtracks_SentisAI/Birdtracks_SentisAI" -quit
+          "C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Unity.exe" -batchmode -projectPath "${{ github.workspace }}/Birdtracks_SentisAI/Birdtracks_SentisAI" -quit
 
       - name: Restore Library cache
         uses: actions/cache@v2
