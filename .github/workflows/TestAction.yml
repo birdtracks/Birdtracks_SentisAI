@@ -28,8 +28,9 @@ jobs:
 
       - name: Generate Library (if missing)
         run: |
-          "C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Unity.exe" -batchmode -projectPath "${{ github.workspace }}/Birdtracks_SentisAI/Birdtracks_SentisAI" -quit
-          if: steps.cache.outputs.cache-hit != 'true'
+          & "C:\Program Files\Unity\Hub\Editor\2022.3.20f1\Editor\Unity.exe" -batchmode -projectPath "C:\Users\Administrator\Documents\actions-runner\_work\Birdtracks_SentisAI\Birdtracks_SentisAI" -quit
+        shell: powershell
+        if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Restore Library cache
         uses: actions/cache@v2
