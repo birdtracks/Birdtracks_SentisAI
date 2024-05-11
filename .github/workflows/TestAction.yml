@@ -45,4 +45,5 @@ jobs:
         uses: game-ci/unity-builder@v4
         with:
           targetPlatform: StandaloneWindows64
+          shell: powershell
       
