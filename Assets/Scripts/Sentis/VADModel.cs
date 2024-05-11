@@ -64,7 +64,7 @@ public class VADModel : MonoBehaviour
         }
         Debug.Log("mic = " + Microphone.devices[0]);
         _isRecording = true;
-        speechClip = Microphone.Start(null, false, 1, 400);
+        speechClip = Microphone.Start(null, false, 1, 16000);
         Debug.Log("Recording started...");
     }
 
